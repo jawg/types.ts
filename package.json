@@ -1,0 +1,46 @@
+{
+  "name": "@jawg/types",
+  "version": "0.0.0",
+  "description": "Shared TypeScript definitions for Jawg Maps projects",
+  "types": "./index.d.ts",
+  "typeScriptVersion": "2.3",
+  "scripts": {
+    "docs": "typedoc --out docs src/ && touch docs/.nojekyll",
+    "lint": "dtslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jawg/types.ts.git"
+  },
+  "keywords": [
+    "api",
+    "typescript",
+    "maps"
+  ],
+  "author": "Jawg Maps <contact@jawg.io>",
+  "license": "MIT",
+  "files": [
+    "src/*",
+    "README.md",
+    "tsconfig.json",
+    "index.d.ts",
+    "packages.json"
+  ],
+  "bugs": {
+    "url": "https://github.com/jawg/types.ts/issues"
+  },
+  "homepage": "https://github.com/jawg/types.ts#readme",
+  "devDependencies": {
+    "dtslint": "^4.1.1",
+    "prettier": "^2.3.2",
+    "typedoc": "^0.21.2",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@types/geojson": "^7946.0.7",
+    "@types/leaflet": "^1.7.3",
+    "@types/mapbox-gl": "^2.3.1",
+    "@types/maplibre-gl": "^1.13.1"
+  }
+}
