@@ -1,3 +1,3 @@
-import * as JawgPlaces from './src/places-js';
+import { JawgPlaces } from './src/places-js';
 
 export { JawgPlaces };
