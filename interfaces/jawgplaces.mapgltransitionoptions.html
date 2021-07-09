@@ -52,7 +52,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../modules.html">@jawg/types</a>
+					<a href="../index.html">@jawg/types</a>
 				</li>
 				<li>
 					<a href="../modules/jawgplaces.html">JawgPlaces</a>
@@ -68,11 +68,23 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Option for transition when the user click on a result on MapLibre or Mapbox.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">MapGLTransitionOptions</span>
+						<a href="jawgplaces.leaflettransitionoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">LeafletTransitionOptions</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">MapGLTransitionOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -85,7 +97,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="jawgplaces.mapgltransitionoptions.html#flycurve" class="tsd-kind-icon">fly<wbr>Curve</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="jawgplaces.mapgltransitionoptions.html#flyspeed" class="tsd-kind-icon">fly<wbr>Speed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="jawgplaces.mapgltransitionoptions.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="jawgplaces.mapgltransitionoptions.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,9 +111,14 @@
 					<div class="tsd-signature tsd-kind-icon">fly<wbr>Curve<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/0c89386/src/places-js.d.ts#L108">places-js.d.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L252">places-js.d.ts:252</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The zooming &quot;curve&quot; that will occur along the flight path.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="flyspeed" class="tsd-anchor"></a>
@@ -109,19 +126,33 @@
 					<div class="tsd-signature tsd-kind-icon">fly<wbr>Speed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/0c89386/src/places-js.d.ts#L109">places-js.d.ts:109</a></li>
+							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L256">places-js.d.ts:256</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The average speed of the animation defined in relation to <code>curve</code>.</p>
+						</div>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="type" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;hybrid&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;fly&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;jump&quot;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="jawgplaces.leaflettransitionoptions.html">LeafletTransitionOptions</a>.<a href="jawgplaces.leaflettransitionoptions.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/0c89386/src/places-js.d.ts#L107">places-js.d.ts:107</a></li>
+							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L242">places-js.d.ts:242</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Type of camera move on result selection.
+								<code>jump</code>: change the position of the camera without animation
+								<code>fly</code>: animating camera transition along curve that evokes flight
+							<code>hybrid</code>: use <code>fly</code> when the camera is near the point and jump otherwise</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -129,7 +160,7 @@
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class=" ">
-						<a href="../modules.html">Exports</a>
+						<a href="../index.html">Exports</a>
 					</li>
 					<li class="current tsd-kind-namespace">
 						<a href="../modules/jawgplaces.html">Jawg<wbr>Places</a>
@@ -194,7 +225,7 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="jawgplaces.mapgltransitionoptions.html#flyspeed" class="tsd-kind-icon">fly<wbr>Speed</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="jawgplaces.mapgltransitionoptions.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
@@ -212,6 +243,12 @@
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
 						<a href="../modules/jawgplaces.html#featurecollection" class="tsd-kind-icon">Feature<wbr>Collection</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
+						<a href="../modules/jawgplaces.html#layer" class="tsd-kind-icon">Layer</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
+						<a href="../modules/jawgplaces.html#source" class="tsd-kind-icon">Source</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-namespace">
 						<a href="../modules/jawgplaces.html#version" class="tsd-kind-icon">version</a>
@@ -239,5 +276,14 @@
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-148785463-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
