@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BoudaryOptions | @jawg/types</title>
+	<title>MapGLTransitionOptions | @jawg/types</title>
 	<meta name="description" content="Documentation for @jawg/types">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,13 +55,13 @@
 					<a href="../index.html">@jawg/types</a>
 				</li>
 				<li>
-					<a href="../modules/default.html">default</a>
+					<a href="../modules/jawgplaces.html">JawgPlaces</a>
 				</li>
 				<li>
-					<a href="default.boudaryoptions.html">BoudaryOptions</a>
+					<a href="jawgplaces.mapgltransitionoptions.html">MapGLTransitionOptions</a>
 				</li>
 			</ul>
-			<h1>Interface BoudaryOptions</h1>
+			<h1>Interface MapGLTransitionOptions</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Set of options when you are looking for places in a particular region.</p>
+						<p>Option for transition when the user click on a result on MapLibre or Mapbox.</p>
 					</div>
 				</div>
 			</section>
@@ -79,7 +79,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BoudaryOptions</span>
+						<a href="jawgplaces.leaflettransitionoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">LeafletTransitionOptions</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">MapGLTransitionOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -90,9 +95,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="default.boudaryoptions.html#circle" class="tsd-kind-icon">circle</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="default.boudaryoptions.html#countries" class="tsd-kind-icon">countries</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="default.boudaryoptions.html#rectangle" class="tsd-kind-icon">rectangle</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="jawgplaces.mapgltransitionoptions.html#flycurve" class="tsd-kind-icon">fly<wbr>Curve</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="jawgplaces.mapgltransitionoptions.html#flyspeed" class="tsd-kind-icon">fly<wbr>Speed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="jawgplaces.mapgltransitionoptions.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -101,47 +106,51 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="circle" class="tsd-anchor"></a>
-					<h3>circle</h3>
-					<div class="tsd-signature tsd-kind-icon">circle<span class="tsd-signature-symbol">:</span> <a href="default.circleoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">CircleOptions</a></div>
+					<a name="flycurve" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> fly<wbr>Curve</h3>
+					<div class="tsd-signature tsd-kind-icon">fly<wbr>Curve<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L105">places-js.d.ts:105</a></li>
+							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L252">src/places-js.d.ts:252</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Search within a circular region.</p>
+							<p>The zooming &quot;curve&quot; that will occur along the flight path.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="countries" class="tsd-anchor"></a>
-					<h3>countries</h3>
-					<div class="tsd-signature tsd-kind-icon">countries<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="flyspeed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> fly<wbr>Speed</h3>
+					<div class="tsd-signature tsd-kind-icon">fly<wbr>Speed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L101">places-js.d.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L256">src/places-js.d.ts:256</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Add a restriction by alpha-2 or alpha-3 ISO-3166 country code.</p>
+							<p>The average speed of the animation defined in relation to <code>curve</code>.</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="rectangle" class="tsd-anchor"></a>
-					<h3>rectangle</h3>
-					<div class="tsd-signature tsd-kind-icon">rectangle<span class="tsd-signature-symbol">:</span> <a href="default.rectangleoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">RectangleOptions</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="type" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;hybrid&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;fly&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;jump&quot;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="jawgplaces.leaflettransitionoptions.html">LeafletTransitionOptions</a>.<a href="jawgplaces.leaflettransitionoptions.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L109">places-js.d.ts:109</a></li>
+							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L242">src/places-js.d.ts:242</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Search within a rectangular region.</p>
+							<p>Type of camera move on result selection.
+								<code>jump</code>: change the position of the camera without animation
+								<code>fly</code>: animating camera transition along curve that evokes flight
+							<code>hybrid</code>: use <code>fly</code> when the camera is near the point and jump otherwise</p>
 						</div>
 					</div>
 				</section>
@@ -154,98 +163,98 @@
 						<a href="../index.html">Exports</a>
 					</li>
 					<li class="current tsd-kind-namespace">
-						<a href="../modules/default.html">default</a>
+						<a href="../modules/jawgplaces.html">Jawg<wbr>Places</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/default.input.html" class="tsd-kind-icon">Input</a>
+						<a href="../classes/jawgplaces.input.html" class="tsd-kind-icon">Input</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/default.leaflet.html" class="tsd-kind-icon">Leaflet</a>
+						<a href="../classes/jawgplaces.leaflet.html" class="tsd-kind-icon">Leaflet</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/default.maplibre.html" class="tsd-kind-icon">Map<wbr>Libre</a>
+						<a href="../classes/jawgplaces.maplibre.html" class="tsd-kind-icon">Map<wbr>Libre</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/default.mapbox.html" class="tsd-kind-icon">Mapbox</a>
+						<a href="../classes/jawgplaces.mapbox.html" class="tsd-kind-icon">Mapbox</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.adminareaoptions.html" class="tsd-kind-icon">Admin<wbr>Area<wbr>Options</a>
+						<a href="jawgplaces.adminareaoptions.html" class="tsd-kind-icon">Admin<wbr>Area<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.boudaryoptions.html" class="tsd-kind-icon">Boudary<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.circleoptions.html" class="tsd-kind-icon">Circle<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.jawgplacesinputoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Input<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.jawgplacesleafletoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Leaflet<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.jawgplacesmaplibreoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Maplibre<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.jawgplacesoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.latlon.html" class="tsd-kind-icon">Lat<wbr>Lon</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.leafletmarkeroptions.html" class="tsd-kind-icon">Leaflet<wbr>Marker<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.leaflettransitionoptions.html" class="tsd-kind-icon">Leaflet<wbr>Transition<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="jawgplaces.mapglmarkeroptions.html" class="tsd-kind-icon">MapGLMarker<wbr>Options</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.boudaryoptions.html" class="tsd-kind-icon">Boudary<wbr>Options</a>
+						<a href="jawgplaces.mapgltransitionoptions.html" class="tsd-kind-icon">MapGLTransition<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="default.boudaryoptions.html#circle" class="tsd-kind-icon">circle</a>
+								<a href="jawgplaces.mapgltransitionoptions.html#flycurve" class="tsd-kind-icon">fly<wbr>Curve</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="default.boudaryoptions.html#countries" class="tsd-kind-icon">countries</a>
+								<a href="jawgplaces.mapgltransitionoptions.html#flyspeed" class="tsd-kind-icon">fly<wbr>Speed</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="default.boudaryoptions.html#rectangle" class="tsd-kind-icon">rectangle</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="jawgplaces.mapgltransitionoptions.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.circleoptions.html" class="tsd-kind-icon">Circle<wbr>Options</a>
+						<a href="jawgplaces.rectangleoptions.html" class="tsd-kind-icon">Rectangle<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.jawgplacesinputoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Input<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.jawgplacesleafletoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Leaflet<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.jawgplacesmaplibreoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Maplibre<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.jawgplacesoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.latlon.html" class="tsd-kind-icon">Lat<wbr>Lon</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.leafletmarkeroptions.html" class="tsd-kind-icon">Leaflet<wbr>Marker<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.leaflettransitionoptions.html" class="tsd-kind-icon">Leaflet<wbr>Transition<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.mapglmarkeroptions.html" class="tsd-kind-icon">MapGLMarker<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.mapgltransitionoptions.html" class="tsd-kind-icon">MapGLTransition<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.rectangleoptions.html" class="tsd-kind-icon">Rectangle<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="default.reverseoptions.html" class="tsd-kind-icon">Reverse<wbr>Options</a>
+						<a href="jawgplaces.reverseoptions.html" class="tsd-kind-icon">Reverse<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
-						<a href="../modules/default.html#feature" class="tsd-kind-icon">Feature</a>
+						<a href="../modules/jawgplaces.html#feature" class="tsd-kind-icon">Feature</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
-						<a href="../modules/default.html#featurecollection" class="tsd-kind-icon">Feature<wbr>Collection</a>
+						<a href="../modules/jawgplaces.html#featurecollection" class="tsd-kind-icon">Feature<wbr>Collection</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
-						<a href="../modules/default.html#layer" class="tsd-kind-icon">Layer</a>
+						<a href="../modules/jawgplaces.html#layer" class="tsd-kind-icon">Layer</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
-						<a href="../modules/default.html#source" class="tsd-kind-icon">Source</a>
+						<a href="../modules/jawgplaces.html#source" class="tsd-kind-icon">Source</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-namespace">
-						<a href="../modules/default.html#version" class="tsd-kind-icon">version</a>
+						<a href="../modules/jawgplaces.html#version" class="tsd-kind-icon">version</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-namespace">
-						<a href="../modules/default.html#attributions" class="tsd-kind-icon">attributions</a>
+						<a href="../modules/jawgplaces.html#attributions" class="tsd-kind-icon">attributions</a>
 					</li>
 				</ul>
 			</nav>
