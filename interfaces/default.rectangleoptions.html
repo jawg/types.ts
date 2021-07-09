@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BoudaryOptions | @jawg/types</title>
+	<title>RectangleOptions | @jawg/types</title>
 	<meta name="description" content="Documentation for @jawg/types">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,13 +55,13 @@
 					<a href="../index.html">@jawg/types</a>
 				</li>
 				<li>
-					<a href="../modules/jawgplaces.html">JawgPlaces</a>
+					<a href="../modules/default.html">default</a>
 				</li>
 				<li>
-					<a href="jawgplaces.boudaryoptions.html">BoudaryOptions</a>
+					<a href="default.rectangleoptions.html">RectangleOptions</a>
 				</li>
 			</ul>
-			<h1>Interface BoudaryOptions</h1>
+			<h1>Interface RectangleOptions</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Set of options when you are looking for places in a particular region.</p>
+						<p>Options to search within a rectangular region.</p>
 					</div>
 				</div>
 			</section>
@@ -79,7 +79,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BoudaryOptions</span>
+						<span class="target">RectangleOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -90,9 +90,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="jawgplaces.boudaryoptions.html#circle" class="tsd-kind-icon">circle</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="jawgplaces.boudaryoptions.html#countries" class="tsd-kind-icon">countries</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="jawgplaces.boudaryoptions.html#rectangle" class="tsd-kind-icon">rectangle</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="default.rectangleoptions.html#max" class="tsd-kind-icon">max</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="default.rectangleoptions.html#min" class="tsd-kind-icon">min</a></li>
 							</ul>
 						</section>
 					</div>
@@ -101,47 +100,32 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="circle" class="tsd-anchor"></a>
-					<h3>circle</h3>
-					<div class="tsd-signature tsd-kind-icon">circle<span class="tsd-signature-symbol">:</span> <a href="jawgplaces.circleoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">CircleOptions</a></div>
+					<a name="max" class="tsd-anchor"></a>
+					<h3>max</h3>
+					<div class="tsd-signature tsd-kind-icon">max<span class="tsd-signature-symbol">:</span> <a href="default.latlon.html" class="tsd-signature-type" data-tsd-kind="Interface">LatLon</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L105">places-js.d.ts:105</a></li>
+							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L91">places-js.d.ts:91</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Search within a circular region.</p>
+							<p>The maximum latitude and longitude of the rectangle.</p>
 						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="countries" class="tsd-anchor"></a>
-					<h3>countries</h3>
-					<div class="tsd-signature tsd-kind-icon">countries<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="min" class="tsd-anchor"></a>
+					<h3>min</h3>
+					<div class="tsd-signature tsd-kind-icon">min<span class="tsd-signature-symbol">:</span> <a href="default.latlon.html" class="tsd-signature-type" data-tsd-kind="Interface">LatLon</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L101">places-js.d.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L87">places-js.d.ts:87</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Add a restriction by alpha-2 or alpha-3 ISO-3166 country code.</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="rectangle" class="tsd-anchor"></a>
-					<h3>rectangle</h3>
-					<div class="tsd-signature tsd-kind-icon">rectangle<span class="tsd-signature-symbol">:</span> <a href="jawgplaces.rectangleoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">RectangleOptions</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/jawg/types.ts/blob/main/src/places-js.d.ts#L109">places-js.d.ts:109</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Search within a rectangular region.</p>
+							<p>The minimum latitude and logitude of the rectangle.</p>
 						</div>
 					</div>
 				</section>
@@ -154,98 +138,95 @@
 						<a href="../index.html">Exports</a>
 					</li>
 					<li class="current tsd-kind-namespace">
-						<a href="../modules/jawgplaces.html">Jawg<wbr>Places</a>
+						<a href="../modules/default.html">default</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/jawgplaces.input.html" class="tsd-kind-icon">Input</a>
+						<a href="../classes/default.input.html" class="tsd-kind-icon">Input</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/jawgplaces.leaflet.html" class="tsd-kind-icon">Leaflet</a>
+						<a href="../classes/default.leaflet.html" class="tsd-kind-icon">Leaflet</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/jawgplaces.maplibre.html" class="tsd-kind-icon">Map<wbr>Libre</a>
+						<a href="../classes/default.maplibre.html" class="tsd-kind-icon">Map<wbr>Libre</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/jawgplaces.mapbox.html" class="tsd-kind-icon">Mapbox</a>
+						<a href="../classes/default.mapbox.html" class="tsd-kind-icon">Mapbox</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.adminareaoptions.html" class="tsd-kind-icon">Admin<wbr>Area<wbr>Options</a>
+						<a href="default.adminareaoptions.html" class="tsd-kind-icon">Admin<wbr>Area<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.boudaryoptions.html" class="tsd-kind-icon">Boudary<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.circleoptions.html" class="tsd-kind-icon">Circle<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.jawgplacesinputoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Input<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.jawgplacesleafletoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Leaflet<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.jawgplacesmaplibreoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Maplibre<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.jawgplacesoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.latlon.html" class="tsd-kind-icon">Lat<wbr>Lon</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.leafletmarkeroptions.html" class="tsd-kind-icon">Leaflet<wbr>Marker<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.leaflettransitionoptions.html" class="tsd-kind-icon">Leaflet<wbr>Transition<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.mapglmarkeroptions.html" class="tsd-kind-icon">MapGLMarker<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="default.mapgltransitionoptions.html" class="tsd-kind-icon">MapGLTransition<wbr>Options</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.boudaryoptions.html" class="tsd-kind-icon">Boudary<wbr>Options</a>
+						<a href="default.rectangleoptions.html" class="tsd-kind-icon">Rectangle<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="jawgplaces.boudaryoptions.html#circle" class="tsd-kind-icon">circle</a>
+								<a href="default.rectangleoptions.html#max" class="tsd-kind-icon">max</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="jawgplaces.boudaryoptions.html#countries" class="tsd-kind-icon">countries</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="jawgplaces.boudaryoptions.html#rectangle" class="tsd-kind-icon">rectangle</a>
+								<a href="default.rectangleoptions.html#min" class="tsd-kind-icon">min</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.circleoptions.html" class="tsd-kind-icon">Circle<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.jawgplacesinputoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Input<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.jawgplacesleafletoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Leaflet<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.jawgplacesmaplibreoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Maplibre<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.jawgplacesoptions.html" class="tsd-kind-icon">Jawg<wbr>Places<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.latlon.html" class="tsd-kind-icon">Lat<wbr>Lon</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.leafletmarkeroptions.html" class="tsd-kind-icon">Leaflet<wbr>Marker<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.leaflettransitionoptions.html" class="tsd-kind-icon">Leaflet<wbr>Transition<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.mapglmarkeroptions.html" class="tsd-kind-icon">MapGLMarker<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.mapgltransitionoptions.html" class="tsd-kind-icon">MapGLTransition<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.rectangleoptions.html" class="tsd-kind-icon">Rectangle<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="jawgplaces.reverseoptions.html" class="tsd-kind-icon">Reverse<wbr>Options</a>
+						<a href="default.reverseoptions.html" class="tsd-kind-icon">Reverse<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
-						<a href="../modules/jawgplaces.html#feature" class="tsd-kind-icon">Feature</a>
+						<a href="../modules/default.html#feature" class="tsd-kind-icon">Feature</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
-						<a href="../modules/jawgplaces.html#featurecollection" class="tsd-kind-icon">Feature<wbr>Collection</a>
+						<a href="../modules/default.html#featurecollection" class="tsd-kind-icon">Feature<wbr>Collection</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
-						<a href="../modules/jawgplaces.html#layer" class="tsd-kind-icon">Layer</a>
+						<a href="../modules/default.html#layer" class="tsd-kind-icon">Layer</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
-						<a href="../modules/jawgplaces.html#source" class="tsd-kind-icon">Source</a>
+						<a href="../modules/default.html#source" class="tsd-kind-icon">Source</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-namespace">
-						<a href="../modules/jawgplaces.html#version" class="tsd-kind-icon">version</a>
+						<a href="../modules/default.html#version" class="tsd-kind-icon">version</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-namespace">
-						<a href="../modules/jawgplaces.html#attributions" class="tsd-kind-icon">attributions</a>
+						<a href="../modules/default.html#attributions" class="tsd-kind-icon">attributions</a>
 					</li>
 				</ul>
 			</nav>
