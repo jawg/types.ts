@@ -7,7 +7,7 @@ declare class AbstractPlaces {
   constructor(options: JawgPlaces.JawgPlacesOptions);
   /**
    * Search a random text or lat/lon using Jawg Places.
-   * All features are points with properties, more details on our [documentation](https://www.jawg.io/docs/apidocs/places/response)+.
+   * All features are points with properties, more details on our [documentation](https://www.jawg.io/docs/apidocs/places/response).
    *
    * @param text to search using Jawg Places
    * @returns promise with the feature collection received from Jawg Places
@@ -47,12 +47,20 @@ declare namespace JawgPlaces {
    * Representation of geographic coordinate using the spatial reference World Geodetic System (WSG84, also known as EPSG:4326).
    */
   interface LatLon {
+    /**
+     * The latitude, geographic coordinate that specifies the north-south position of a point on the Earth's surface.
+     */
     lat: number;
+    /**
+     * The longitude, geographic coordinate that specifies the east-west position of a point on the Earth's surface.
+     */
     lon: number;
   }
 
   /**
-   * Option to activate reverse geocoding.
+   * Option to activate reverse geocoding withing the input.
+   * You can paste coordinates in the form {lat}/{lon} in the input.
+   * The separation can be either `/` (slash), `,` (comma) or ` ` (space).
    */
   interface ReverseOptions {
     enabled: boolean;
@@ -63,89 +71,305 @@ declare namespace JawgPlaces {
   }
 
   interface CircleOptions extends LatLon {
+    /**
+     * Radius over the point in meters.
+     */
     radius: number;
   }
 
+  /**
+   * Options to search within a rectangular region.
+   */
   interface RectangleOptions {
+    /**
+     * The minimum latitude and logitude of the rectangle.
+     */
     min: LatLon;
+    /**
+     * The maximum latitude and longitude of the rectangle.
+     */
     max: LatLon;
   }
 
+  /**
+   * Set of options when you are looking for places in a particular region.
+   */
   interface BoudaryOptions {
+    /**
+     * Add a restriction by alpha-2 or alpha-3 ISO-3166 country code.
+     */
     countries: string[] | string;
+    /**
+     * Search within a circular region.
+     */
     circle: CircleOptions;
+    /**
+     * Search within a rectangular region.
+     */
     rectangle: RectangleOptions;
   }
 
+  /**
+   * Type of geometries used by Jawg Places API.
+   */
   type Feature = GeoJSON.Feature<GeoJSON.Point>;
+  /**
+   * Return type of Jawg Places API.
+   */
   type FeatureCollection = GeoJSON.FeatureCollection<GeoJSON.Point>;
+  /**
+   * All available layers.
+   */
+  type Layer =
+    | 'address'
+    | 'venue'
+    | 'neighbourhood'
+    | 'locality'
+    | 'borough'
+    | 'localadmin'
+    | 'county'
+    | 'macrocounty'
+    | 'region'
+    | 'macroregion'
+    | 'country'
+    | 'coarse'
+    | 'postalcode'
+    | string;
+  /**
+   * All available sources.
+   */
+  type Source = 'wof' | 'whosonfirst' | 'oa' | 'openaddresses' | 'osm' | 'openstreetmap' | 'gn' | 'geonames' | string;
 
+  /**
+   * Basic options for Places JS.
+   */
   interface JawgPlacesOptions {
+    /**
+     * Your personal access token, create your own on the [Jawg Lab](https://www.jawg.io/lab).
+     * This is filled automatically when you get the library with our CDN.
+     */
     accessToken?: string;
+    /**
+     * The `<input>` to transform into a geocoding search bar.
+     * This can be either a id (e.g `#my-input`), class selector (e.g `.my-input`) or the {@link HTMLElement}.
+     * With some frameworks/UI libs such as React, you can't use the ref here.
+     */
+    input?: string | HTMLElement;
+    /**
+     * The custom `<div>` that will contain the geocoding results.
+     * By default the container is created by Jawg Places JS.
+     * With some frameworks/UI libs such as React, you can't use the ref here.
+     */
+    resultContainer?: string | HTMLElement;
+    /**
+     * Return results in a specific language using [BCP47 standard](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) (e.g 'en', 'fr', 'de', ...).
+     * By default, we use HTTP Header set by the browser and English when not present.
+     */
     language?: string;
+    /**
+     * Set this to `true` to activate search on typing, this will also use `autocomplete` search.
+     * Default value is `false`, you will need to press `Enter` to validate your search.
+     */
     searchOnTyping?: boolean;
-    layers?: string[] | string;
-    sources?: string[] | string;
+    /**
+     * Filter the kind of place you want to find.
+     */
+    layers?: Layer[] | Layer;
+    /**
+     * Filter the originating source of the data.
+     */
+    sources?: Source[] | Source;
+    /**
+     * Sort results in part by their proximity to the given coordinate. Coordinates can be static or dynamic with the function.
+     */
     focusPoint?: LatLon | (() => LatLon);
+    /**
+     * Set of options when you are looking for places in a particular region.
+     */
     boundary?: BoudaryOptions;
+    /**
+     * Show icon at the left each results.
+     */
     showResultIcons?: boolean;
+    /**
+     * Add a clear cross in the right side of the input.
+     */
     clearCross?: boolean;
+    /**
+     * Set the default number of results. Default value is 10.
+     */
     size?: number;
+    /**
+     * Option to activate reverse geocoding withing the input.
+     * You can paste coordinates in the form {lat}/{lon} in the input.
+     * The separation can be either `/` (slash), `,` (comma) or ` ` (space).
+     */
     reverse?: ReverseOptions;
+    /**
+     * Callback triggered when Jawg Places API returns without error.
+     * @param features list of features returned by Jawg Places API
+     */
     onFeatures?: (features: Feature[]) => void;
+    /**
+     * Callback triggered when the result list is closed/cleared.
+     */
     onClose?: () => void;
+    /**
+     * Callback triggered when the user click on a result.
+     * @param feature selected by the user
+     */
     onClick?: (feature: Feature) => void;
+    /**
+     * Callback triggered when Jawg Places API returns an error.
+     */
     onError?: (error: any) => void;
+    /**
+     * Callback triggered when the input is empty.
+     */
     onClear?: () => void;
   }
 
+  /**
+   * Option for transition when the user click on a result on Leaflet.
+   */
   interface LeafletTransitionOptions {
+    /**
+     * Type of camera move on result selection.
+     * `jump`: change the position of the camera without animation
+     * `fly`: animating camera transition along curve that evokes flight
+     * `hybrid`: use `fly` when the camera is near the point and jump otherwise
+     */
     type?: 'hybrid' | 'fly' | 'jump';
   }
 
-  interface MapGLTransitionOptions {
-    type?: 'hybrid' | 'fly' | 'jump';
+  /**
+   * Option for transition when the user click on a result on MapLibre or Mapbox.
+   */
+  interface MapGLTransitionOptions extends LeafletTransitionOptions {
+    /**
+     * The zooming "curve" that will occur along the flight path.
+     */
     flyCurve?: number;
+    /**
+     * The average speed of the animation defined in relation to `curve`.
+     */
     flySpeed?: number;
   }
 
+  /**
+   * Option to show administrative area when available.
+   */
   interface AdminAreaOptions {
+    /**
+     * `true` to show administrative boundary when the result is a administrative area.
+     */
     show: boolean;
+    /**
+     * Fill color for the polygon.
+     */
     fillColor?: string;
+    /**
+     * Outline color for the polygon.
+     */
     outlineColor?: string;
   }
 
+  /**
+   * Option for MapLibre and Mapbox markers.
+   */
   interface MapGLMarkerOptions {
+    /**
+     * `true` to show the result marker, `all` to show all results and `false` to hide markers.
+     */
     show: boolean | 'all';
+    /**
+     * Name of the marker from your sprites.
+     */
     icon?: string;
+    /**
+     * Anchor for the marker.
+     */
     anchor?: 'center' | 'left' | 'right' | 'top' | 'bottom' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+    /**
+     * Use a custom marker with a URL. The response must be a PNG image.
+     */
     iconUrl?: string;
   }
 
+  /**
+   * Option for Leaflet markers.
+   */
   interface LeafletMarkerOptions {
+    /**
+     * `true` to show the result marker, `all` to show all results and `false` to hide markers.
+     */
     show: boolean | 'all';
+    /**
+     * Marker to use for results.
+     */
     icon?: L.Icon;
   }
 
+  /**
+   * Options for {@link JawgPlaces.Input}
+   */
   interface JawgPlacesInputOptions extends JawgPlacesOptions {
     input: string | HTMLElement;
-    resultContainer?: string | HTMLElement;
   }
 
-  interface JawgPlacesMaplibreOptions extends JawgPlacesInputOptions {
+  /**
+   * Options for {@link JawgPlaces.MapLibre} and {@link JawgPlaces.Mapbox}
+   */
+  interface JawgPlacesMaplibreOptions extends JawgPlacesOptions {
+    /**
+     * Placeholder text to add when the input in generated by the library.
+     */
     placeholder?: string;
+    /**
+     * Class to add to the input when it's generated by the library.
+     */
     inputClasses?: string;
+    /**
+     * Option to show administrative area when available.
+     */
     adminArea?: AdminAreaOptions;
+    /**
+     * Option to configure result markers on the map.
+     */
     marker?: MapGLMarkerOptions;
+    /**
+     * Option to configure transition on result selection.
+     */
     transition?: MapGLTransitionOptions;
   }
 
-  interface JawgPlacesLeafletOptions extends JawgPlacesInputOptions {
+  /**
+   * Options for {@link JawgPlaces.Leaflet}
+   */
+  interface JawgPlacesLeafletOptions extends JawgPlacesOptions {
+    /**
+     * Placeholder text to add when the input in generated by the library.
+     */
     placeholder?: string;
+    /**
+     * Class to add to the input when it's generated by the library.
+     */
     inputClasses?: string;
+    /**
+     * Option to show administrative area when available.
+     */
     adminArea?: AdminAreaOptions;
+    /**
+     * Option to configure result markers on the map.
+     */
     marker?: LeafletMarkerOptions;
+    /**
+     * Option to configure transition on result selection.
+     */
     transition?: LeafletTransitionOptions;
+    /**
+     * Position of the input on the map.
+     */
     position?: 'topleft' | 'topright' | 'bottomleft' | 'bottomright';
     /**
      * The Leaflet instance for marker creation
@@ -153,29 +377,75 @@ declare namespace JawgPlaces {
     L: any;
   }
 
+  /**
+   * This class will help you to transform any input into search bar for geocoding.
+   */
   class Input extends AbstractPlaces {
     constructor(options: JawgPlacesInputOptions);
   }
 
+  /**
+   * This class will help you to add or use search bar for geocoding with a MapLibre GL JS map.
+   */
   class MapLibre extends AbstractPlaces {
     constructor(options: JawgPlacesMaplibreOptions);
-    onAdd(map: mapboxgl.Map): void;
+    /**
+     * This is the function used by MapLibre and Mapbox when you add a {@link mapboxgl.Control}.
+     * Adds the control to the given map.
+     * @param map from MapLibre or Mapbox
+     */
+    onAdd(map: mapboxgl.Map): HTMLElement;
+    /**
+     * When Jawg Places is not used as a control within your map, you will need to call this function.
+     * @param map from MapLibre or Mapbox
+     */
     attachMap(map: mapboxgl.Map): MapLibre | Mapbox;
+    /**
+     * The default position of the control in the map.
+     */
     getDefaultPosition(): 'top-left';
   }
 
+  /**
+   * This class will help you to add or use search bar for geocoding with a Mapbox GL JS map.
+   */
   class Mapbox extends MapLibre {}
 
+  /**
+   * This class will help you to add or use search bar for geocoding with a Leaflet map.
+   */
   class Leaflet extends AbstractPlaces {
     constructor(options: JawgPlacesLeafletOptions);
+    /**
+     * This is the function used by Leaflet when you add a {@link L.Control}.
+     * Adds the control to the given map.
+     * @param map from Leaflet
+     */
     onAdd(map: L.Map): void;
+    /**
+     * The current position of the control in the map.
+     */
     getPosition(): string;
+    /**
+     * Adds the control to the given map.
+     * @param map from leaflet
+     */
     addTo(map: L.Map): void;
+    /**
+     * When Jawg Places is not used as a control within your map, you will need to call this function.
+     * @param map from Leaflet
+     */
     attachMap(map: L.Map): Leaflet;
   }
 
+  /**
+   * Current version of the library.
+   */
   const version: number;
 
+  /**
+   * Full representation of corret Jawg Maps attributions.
+   */
   function attributions(): HTMLElement;
 }
 

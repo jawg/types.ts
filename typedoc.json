@@ -1,0 +1,7 @@
+{
+  "entryPoints": ["./index.d.ts"],
+  "out": "docs",
+  "readme": "none",
+  "gaID": "UA-148785463-1",
+  "gitRevision": "main"
+}
