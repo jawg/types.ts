@@ -1,11 +1,11 @@
 {
   "name": "@jawg/types",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Shared TypeScript definitions for Jawg Maps projects",
   "types": "./index.d.ts",
   "typeScriptVersion": "2.3",
   "scripts": {
-    "docs": "typedoc --out docs src/ && touch docs/.nojekyll",
+    "docs": "typedoc --out docs index.d.ts && touch docs/.nojekyll",
     "lint": "dtslint",
     "start": "rollup -c -w",
     "test": "tsc --noEmit test/*.ts"

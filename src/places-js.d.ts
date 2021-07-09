@@ -449,4 +449,5 @@ declare namespace JawgPlaces {
   function attributions(): HTMLElement;
 }
 
-export { JawgPlaces };
+export as namespace JawgPlaces;
+export default JawgPlaces;
