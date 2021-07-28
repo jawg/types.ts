@@ -1,5 +1,4 @@
 /// <reference types="geojson" />
-/// <reference types="leaflet" />
 /// <reference types="mapbox-gl" />
 /// <reference types="maplibre-gl" />
 
@@ -412,7 +411,8 @@ declare namespace JawgPlaces {
   class MapLibre extends AbstractPlaces {
     constructor(options?: JawgPlacesMaplibreOptions);
     /**
-     * This is the function used by MapLibre and Mapbox when you add a [maplibre.IControl](https://maplibre.org/maplibre-gl-js-docs/api/markers/#icontrol) or [mapboxgl.IControl](https://docs.mapbox.com/mapbox-gl-js/api/markers/#icontrol).
+     * This is the function used by MapLibre and Mapbox when you add a
+     * [maplibre.IControl](https://maplibre.org/maplibre-gl-js-docs/api/markers/#icontrol) or [mapboxgl.IControl](https://docs.mapbox.com/mapbox-gl-js/api/markers/#icontrol).
      * Adds the control to the given map.
      * @param map from [MapLibre](https://maplibre.org/maplibre-gl-js-docs/api/map/) or [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)
      * @returns the generated control container
