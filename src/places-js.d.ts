@@ -467,9 +467,9 @@ declare namespace JawgPlaces {
   }
 
   /**
-   * Current version of the library.
+   * Current version of the library in Semantic Versioning.
    */
-  const version: number;
+  const version: string;
 
   /**
    * Full representation of corret Jawg Maps attributions.
