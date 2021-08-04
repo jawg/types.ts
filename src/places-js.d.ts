@@ -240,7 +240,7 @@ declare namespace JawgPlaces {
      * `fly`: animating camera transition along curve that evokes flight
      * `hybrid`: use `fly` when the camera is near the point and jump otherwise
      */
-    type?: 'hybrid' | 'fly' | 'jump';
+    type?: 'hybrid' | 'fly' | 'jump' | 'none';
   }
 
   /**
