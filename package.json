@@ -1,6 +1,6 @@
 {
   "name": "@jawg/types",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared TypeScript definitions for Jawg Maps projects",
   "types": "./index.d.ts",
   "typeScriptVersion": "2.3",
@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/jawg/types.ts/issues"
   },
-  "homepage": "https://github.com/jawg/types.ts#readme",
+  "homepage": "https://jawg.github.io/types.ts",
   "devDependencies": {
     "dtslint": "^4.1.1",
     "prettier": "^2.3.2",
