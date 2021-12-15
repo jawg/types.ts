@@ -173,6 +173,20 @@ declare namespace JawgPlaces {
      */
     searchOnTyping?: boolean;
     /**
+     * Set the minimum number of characters to trigger a geocoding request.
+     * If you press `Enter` the search will be validated even if the length is not reached.
+     * This option work only when `searchOnTyping=true`.
+     * Default value is `0`.
+     */
+     minLength?: number;
+    /**
+     * Set the number of milliseconds to wait before a search validation.
+     * If you press `Enter` the search will be immediately validated.
+     * This option work only when `searchOnTyping=true`.
+     * Default value is `350`.
+     */
+     debounceDelay?: number;
+    /**
      * Filter the kind of place you want to find.
      */
     layers?: Layer[] | Layer;
