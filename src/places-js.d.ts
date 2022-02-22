@@ -41,6 +41,11 @@ declare class AbstractPlaces {
    * Close the result list.
    */
   close(): void;
+  /**
+   * Clear created DOM elements and listeners.
+   * This could be usefull when you recreate a JawgPlace object for the same input.
+   */
+  destroy(): void;
 }
 
 declare namespace JawgPlaces {
