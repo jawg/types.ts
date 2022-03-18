@@ -102,17 +102,17 @@ declare namespace JawgPlaces {
    */
   interface BoudaryOptions {
     /**
-     * Add a restriction by alpha-2 or alpha-3 ISO-3166 country code.
+     * Add a restriction by alpha-2 or alpha-3 ISO-3166 country code. Countries can be static or dynamic with the function.
      */
-    countries: string[] | string;
+    countries: string[] | string | (() => string[]) | (() => string);
     /**
-     * Search within a circular region.
+     * Search within a circular region. Circle can be static or dynamic with the function.
      */
-    circle: CircleOptions;
+    circle: CircleOptions | (() => CircleOptions);
     /**
-     * Search within a rectangular region.
+     * Search within a rectangular region. Rectangle can be static or dynamic with the function.
      */
-    rectangle: RectangleOptions;
+    rectangle: RectangleOptions | (() => RectangleOptions);
   }
 
   /**
@@ -170,8 +170,9 @@ declare namespace JawgPlaces {
     /**
      * Return results in a specific language using [BCP47 standard](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) (e.g 'en', 'fr', 'de', ...).
      * By default, we use HTTP Header set by the browser and English when not present.
+     * Language can be static or dynamic with the function.
      */
-    language?: string;
+    language?: string | (() => string);
     /**
      * Set this to `true` to activate search on typing, this will also use `autocomplete` search.
      * Default value is `false`, you will need to press `Enter` to validate your search.
@@ -192,13 +193,13 @@ declare namespace JawgPlaces {
      */
      debounceDelay?: number;
     /**
-     * Filter the kind of place you want to find.
+     * Filter the kind of place you want to find. Layers can be static or dynamic with the function.
      */
-    layers?: Layer[] | Layer;
+    layers?: Layer[] | Layer | (() => Layer) | (() => Layer[]);
     /**
-     * Filter the originating source of the data.
+     * Filter the originating source of the data. Sources can be static or dynamic with the function.
      */
-    sources?: Source[] | Source;
+    sources?: Source[] | Source | (() => Source[]) | (() => Source);
     /**
      * Sort results in part by their proximity to the given coordinate. Coordinates can be static or dynamic with the function.
      */
