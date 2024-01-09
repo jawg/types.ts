@@ -3,12 +3,12 @@
   "version": "1.0.5",
   "description": "Shared TypeScript definitions for Jawg Maps projects",
   "types": "./index.d.ts",
+  "type": "module",
   "typeScriptVersion": "2.3",
   "scripts": {
-    "docs": "typedoc --out docs index.d.ts && touch docs/.nojekyll",
-    "lint": "dtslint",
+    "docs": "typedoc --out docs index.d.ts",
     "start": "rollup -c -w",
-    "test": "tsc --noEmit test/*.ts"
+    "test": "tsc --esModuleInterop --noEmit test/*.ts"
   },
   "repository": {
     "type": "git",
@@ -33,18 +33,17 @@
   },
   "homepage": "https://jawg.github.io/types.ts",
   "devDependencies": {
-    "dtslint": "^4.1.1",
-    "prettier": "^2.3.2",
-    "rollup": "^2.52.8",
-    "rollup-plugin-dts": "^3.0.2",
+    "prettier": "^3.1.1",
+    "rollup": "^4.9.4",
+    "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-serve": "^1.1.0",
-    "typedoc": "^0.21.2",
-    "typescript": "^4.3.5"
+    "typedoc": "^0.25.6",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@types/geojson": "^7946.0.7",
     "@types/leaflet": "^1.7.3",
     "@types/mapbox-gl": "^1.13.2",
-    "maplibre-gl": "^1.15.2"
+    "maplibre-gl": "^3.6.2"
   }
 }

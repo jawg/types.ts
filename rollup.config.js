@@ -7,15 +7,13 @@ const port = process.env.ROLLUP_PORT || 8000;
 const typedoc = {
   name: 'typedoc',
   buildStart: async () => {
-    const app = new TypeDoc.Application();
+    const app = await TypeDoc.Application.bootstrapWithPlugins();
 
     // TypeDoc will load tsconfig.json and typedoc.json files
     app.options.addReader(new TypeDoc.TSConfigReader());
     app.options.addReader(new TypeDoc.TypeDocReader());
 
-    app.bootstrap();
-
-    const project = app.convert();
+    const project = await app.convert();
 
     if (project) {
       await app.generateDocs(project, app.options.getValue('out'));

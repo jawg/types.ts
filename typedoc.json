@@ -3,5 +3,6 @@
   "out": "docs",
   "readme": "none",
   "gaID": "UA-148785463-1",
-  "gitRevision": "main"
+  "gitRevision": "main",
+  "githubPages": true,
 }
