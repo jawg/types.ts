@@ -8,10 +8,13 @@ declare class AbstractPlaces {
   constructor(options: JawgPlaces.JawgPlacesOptions);
   /**
    * Search a random text or lat/lon using Jawg Places.
+   *
    * All features are points with properties, more details on our [documentation](https://www.jawg.io/docs/apidocs/places/response).
    *
-   * @param text to search using Jawg Places
-   * @returns promise with the feature collection received from Jawg Places
+   * See {@link JawgPlacesOptions.reverse} for lat/lon search.
+   *
+   * @param text The text to search using Jawg Places
+   * @returns A promise with the feature collection received from Jawg Places
    */
   search(text: string): Promise<JawgPlaces.FeatureCollection>;
   /**
@@ -48,6 +51,10 @@ declare class AbstractPlaces {
   destroy(): void;
 }
 
+/**
+ * Welcome to Jawg Places type documentation.
+ * Checkout our examples on our [documentation website](https://www.jawg.io/docs/integration/places-js/) and the source code on [GitHub](https://github.com/jawg/places-js-examples).
+ */
 declare namespace JawgPlaces {
   /**
    * Representation of geographic coordinate using the spatial reference World Geodetic System (WSG84, also known as EPSG:4326).
@@ -67,8 +74,19 @@ declare namespace JawgPlaces {
    * Option to activate reverse geocoding withing the input.
    * You can paste coordinates in the form {lat}/{lon} in the input.
    * The separation can be either `/` (slash), `,` (comma) or ` ` (space).
+   * ```javascript
+   * new JawgPlaces({
+   *   reverse: {
+   *     enabled: true,
+   *     radius: 50
+   *   }
+   * })
+   * ```
    */
   interface ReverseOptions {
+    /**
+     * Enable reverse geocoding in input.
+     */
     enabled: boolean;
     /**
      * Radius over the point in meters.
@@ -99,6 +117,15 @@ declare namespace JawgPlaces {
 
   /**
    * Set of options when you are looking for places in a particular region.
+   * ```javascript
+   * new JawgPlaces({
+   *   boundaries: {
+   *     countries: 'fra',
+   *     point: { lat: 0, lon: 0 },
+   *     gids: ['whosonfirst:locality:101751119']
+   *   }
+   * })
+   * ```
    */
   interface BoudaryOptions {
     /**
@@ -110,9 +137,40 @@ declare namespace JawgPlaces {
      */
     circle: CircleOptions | (() => CircleOptions);
     /**
+     * Add a restriction by GIDs. GIDs can be static or dynamic with the function.
+     */
+    gids: string[] | string | (() => string[]) | (() => string);
+    /**
      * Search within a rectangular region. Rectangle can be static or dynamic with the function.
      */
     rectangle: RectangleOptions | (() => RectangleOptions);
+  }
+
+  /**
+   * Set of options when you want to prioritize places from particular region.
+   * ```javascript
+   * new JawgPlaces({
+   *   focus: {
+   *     countries: 'fra',
+   *     point: { lat: 0, lon: 0 },
+   *     gids: ['whosonfirst:locality:101751119']
+   *   }
+   * })
+   * ```
+   */
+  interface FocusOptions {
+    /**
+     * Add a priorities by alpha-2 or alpha-3 ISO-3166 country code. Countries can be static or dynamic with the function.
+     */
+    countries: string[] | string | (() => string[]) | (() => string);
+    /**
+     * Sort results in part by their proximity to the given coordinate. Coordinates can be static or dynamic with the function.
+     */
+    point?: LatLon | (() => LatLon);
+    /**
+     * Add a priorities by Jawg GIDs. GIDs can be static or dynamic with the function.
+     */
+    gids: string[] | string | (() => string[]) | (() => string);
   }
 
   /**
@@ -140,14 +198,32 @@ declare namespace JawgPlaces {
     | 'country'
     | 'coarse'
     | 'postalcode'
+    | 'island'
     | string;
+
   /**
    * All available sources.
    */
-  type Source = 'wof' | 'whosonfirst' | 'oa' | 'openaddresses' | 'osm' | 'openstreetmap' | 'gn' | 'geonames' | string;
+  type Source =
+    | 'wof'
+    | 'whosonfirst'
+    | 'oa'
+    | 'openaddresses'
+    | 'osm'
+    | 'openstreetmap'
+    | 'gn'
+    | 'geonames'
+    | 'jawg'
+    | string;
 
   /**
    * Basic options for Places JS.
+   * ```javascript
+   * new JawgPlaces({
+   *   accessToken: '<Access-Token>',
+   *   input: '#my-input'
+   * })
+   * ```
    */
   interface JawgPlacesOptions {
     /**
@@ -184,14 +260,14 @@ declare namespace JawgPlaces {
      * This option work only when `searchOnTyping=true`.
      * Default value is `0`.
      */
-     minLength?: number;
+    minLength?: number;
     /**
      * Set the number of milliseconds to wait before a search validation.
      * If you press `Enter` the search will be immediately validated.
      * This option work only when `searchOnTyping=true`.
      * Default value is `350`.
      */
-     debounceDelay?: number;
+    debounceDelay?: number;
     /**
      * Filter the kind of place you want to find. Layers can be static or dynamic with the function.
      */
@@ -201,7 +277,7 @@ declare namespace JawgPlaces {
      */
     sources?: Source[] | Source | (() => Source[]) | (() => Source);
     /**
-     * Sort results in part by their proximity to the given coordinate. Coordinates can be static or dynamic with the function.
+     * See {@link FocusOptions.point}
      */
     focusPoint?: LatLon | (() => LatLon);
     /**
@@ -228,7 +304,7 @@ declare namespace JawgPlaces {
     reverse?: ReverseOptions;
     /**
      * Callback triggered when Jawg Places API returns without error.
-     * @param features list of features returned by Jawg Places API
+     * @param features The list of features returned by Jawg Places API
      */
     onFeatures?: (features: Feature[]) => void;
     /**
@@ -237,7 +313,7 @@ declare namespace JawgPlaces {
     onClose?: () => void;
     /**
      * Callback triggered when the user click on a result.
-     * @param feature selected by the user
+     * @param feature The feature selected by the user
      */
     onClick?: (feature: Feature) => void;
     /**
@@ -434,13 +510,13 @@ declare namespace JawgPlaces {
      * This is the function used by MapLibre and Mapbox when you add a
      * [maplibre.IControl](https://maplibre.org/maplibre-gl-js-docs/api/markers/#icontrol) or [mapboxgl.IControl](https://docs.mapbox.com/mapbox-gl-js/api/markers/#icontrol).
      * Adds the control to the given map.
-     * @param map from [MapLibre](https://maplibre.org/maplibre-gl-js-docs/api/map/) or [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)
-     * @returns the generated control container
+     * @param map The map from [MapLibre](https://maplibre.org/maplibre-gl-js-docs/api/map/) or [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)
+     * @returns The generated control container
      */
     onAdd(map: maplibregl.Map | mapboxgl.Map): HTMLElement;
     /**
      * When Jawg Places **is not used** as a control within your map, you will need to call this function.
-     * @param map from [MapLibre](https://maplibre.org/maplibre-gl-js-docs/api/map/) or [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)
+     * @param map The map from [MapLibre](https://maplibre.org/maplibre-gl-js-docs/api/map/) or [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)
      * @returns itself
      */
     attachMap(map: maplibregl.Map | mapboxgl.Map): MapLibre;
@@ -454,6 +530,9 @@ declare namespace JawgPlaces {
    * This class will help you to add or use search bar for geocoding with a Mapbox GL JS map.
    */
   class Mapbox extends MapLibre {
+    /**
+     * @inheritdoc
+     */
     attachMap(map: maplibregl.Map | mapboxgl.Map): Mapbox;
   }
 
@@ -463,10 +542,9 @@ declare namespace JawgPlaces {
   class Leaflet extends AbstractPlaces {
     constructor(options: JawgPlacesLeafletOptions);
     /**
-     * This is the function used by Leaflet when you add a [L.Control](https://leafletjs.com/reference-1.7.1.html#control).
+     * This is the function used by Leaflet when you add a [L.Control](https://leafletjs.com/reference.html#control).
      * Adds the control to the given map.
-     * @param map from [Leaflet](https://leafletjs.com/reference-1.7.1.html#map-example)
-     * @returns the generated control container
+     * @param map The map from [Leaflet](https://leafletjs.com/reference.html#map-example)
      */
     onAdd(map: L.Map): void;
     /**
@@ -475,12 +553,12 @@ declare namespace JawgPlaces {
     getPosition(): string;
     /**
      * Adds the control to the given map.
-     * @param map from [Leaflet](https://leafletjs.com/reference-1.7.1.html#map-example)
+     * @param map from [Leaflet](https://leafletjs.com/reference.html#map-example)
      */
     addTo(map: L.Map): void;
     /**
      * When Jawg Places **is not used** as a control within your map, you will need to call this function.
-     * @param map from [Leaflet](https://leafletjs.com/reference-1.7.1.html#map-example)
+     * @param map from [Leaflet](https://leafletjs.com/reference.html#map-example)
      * @returns itself
      */
     attachMap(map: L.Map): Leaflet;
