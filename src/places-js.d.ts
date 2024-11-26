@@ -439,7 +439,7 @@ declare namespace JawgPlaces {
     /**
      * Option to configure result markers on the map.
      */
-    marker?: MapGLMarkerOptions;
+    marker?: MapGLMarkerOptions | boolean | 'all';
     /**
      * Option to configure transition on result selection.
      */
@@ -475,7 +475,7 @@ declare namespace JawgPlaces {
     /**
      * Option to configure result markers on the map.
      */
-    marker?: LeafletMarkerOptions;
+    marker?: LeafletMarkerOptions | boolean | 'all';
     /**
      * Option to configure transition on result selection.
      */
