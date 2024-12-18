@@ -1,6 +1,6 @@
 {
   "name": "@jawg/types",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Shared TypeScript definitions for Jawg Maps projects",
   "types": "./index.d.ts",
   "type": "module",
