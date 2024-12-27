@@ -37,6 +37,7 @@ declare class AbstractPlaces {
   /**
    * Open the result list with elements from the FeatureCollection. We use the `properties.label` field of each features.
    * This will trigger {@link JawgPlacesOptions.onFeatures} callback.
+   * Use it if you want to display specific results or add new elements.
    * @param results Feature Collection of geocoded points.
    */
   showResults(results: JawgPlaces.FeatureCollection): void;
@@ -45,8 +46,8 @@ declare class AbstractPlaces {
    */
   close(): void;
   /**
-   * Clear created DOM elements and listeners.
-   * This could be usefull when you recreate a JawgPlace object for the same input.
+   * Destroy all created DOM elements and listeners.
+   * This could be useful when you recreate a JawgPlace instance for the same input.
    */
   destroy(): void;
 }
@@ -130,7 +131,7 @@ declare namespace JawgPlaces {
 
   /**
    * Set of options to restrict your forward geocoding to specific regions.
-   * It will filter out all locations outside of the configured boundaries.
+   * It will filter out all locations outside the configured boundaries.
    *
    * ```javascript
    * const boundary = {
@@ -152,7 +153,7 @@ declare namespace JawgPlaces {
      */
     countries?: string[] | string | (() => string[]) | (() => string);
     /**
-     * @inheritdoc CircleOptions
+     * @inheritDoc CircleOptions
      *
      * @remarks The circle can be static or dynamic through a function.
      */
@@ -164,7 +165,7 @@ declare namespace JawgPlaces {
      */
     gids?: string[] | string | (() => string[]) | (() => string);
     /**
-     * @inheritdoc RectangleOptions
+     * @inheritDoc RectangleOptions
      *
      * @remarks The rectangle can be static or dynamic through a function.
      */
@@ -191,9 +192,9 @@ declare namespace JawgPlaces {
      */
     countries?: string[] | string | (() => string[]) | (() => string);
     /**
-     * Sort results in part by their proximity to the given coordinate. Coordinates can be static or dynamic with the function.
+     * Sort results in part by their proximity to the given coordinate.
      *
-     * @remarks Point can be static or dynamic through a function. The radius is 50km and cannot be changed.
+     * @remarks Coordinates can be static or dynamic through a function. The radius is 50km and cannot be changed.
      */
     point?: LatLon | (() => LatLon);
     /**
@@ -233,11 +234,50 @@ declare namespace JawgPlaces {
 
   /**
    * Type of geometries used by Jawg Places API.
+   *
+   * ```json
+   * {
+   *   "type": "Feature",
+   *   "geometry": {
+   *     "type": "Point",
+   *     "coordinates": [ 2.320041, 48.85889 ]
+   *   },
+   *   "properties": {
+   *     "id": "relation/7444",
+   *     "gid": "openstreetmap:localadmin:relation/7444",
+   *     "layer": "localadmin",
+   *     "source": "openstreetmap",
+   *     "source_id": "relation/7444",
+   *     "country_code": "FR",
+   *     "name": "Paris",
+   *     "label": "Paris, France",
+   *     "addendum": { }
+   *   },
+   *   "bbox": [ 2.224121956250343, 48.81557548222165, 2.469760166634671, 48.90215593195729 ]
+   * }
+   * ```
    */
   type Feature = GeoJSON.Feature<GeoJSON.Point | GeoJSON.Polygon | GeoJSON.MultiPolygon>;
 
   /**
    * Return type of Jawg Places API.
+   *
+   * ```json
+   * {
+   *  "geocoding": {
+   *    "version": "0.2",
+   *    "attribution": "...",
+   *    "query": { },
+   *    "engine": {
+   *      "name": "Jawg Places",
+   *      "author": "Jawg",
+   *      "version": "1.0"
+   *    }
+   *  },
+   *  "type": "FeatureCollection",
+   *  "features": [ ],
+   *  "bbox": [ ]
+   * ```
    */
   type FeatureCollection = GeoJSON.FeatureCollection<GeoJSON.Point | GeoJSON.Polygon | GeoJSON.MultiPolygon>;
 
@@ -276,16 +316,7 @@ declare namespace JawgPlaces {
     | 'jawg'
     | string;
 
-  /**
-   * Options to configure a Places JS instance.
-   *
-   * ```javascript
-   * const options = {
-   *   accessToken: '<Access-Token>',
-   *   input: '#my-input',
-   * }
-   * ```
-   */
+  /** @ignore */
   interface JawgPlacesOptions {
     /**
      * Your personal access token, create your own on the [Jawg Lab](https://www.jawg.io/lab).
@@ -294,7 +325,7 @@ declare namespace JawgPlaces {
     accessToken?: string;
     /**
      * The `<input>` to transform into a geocoding search bar.
-     * This can be either an id (e.g `#my-input`), class selector (e.g `.my-input`) or the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement).
+     * This can be either an id (e.g. `#my-input`), class selector (e.g. `.my-input`) or the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement).
      * With some frameworks/UI libs such as React, you can't use the ref here.
      */
     input?: string | HTMLElement;
@@ -319,15 +350,15 @@ declare namespace JawgPlaces {
     /**
      * Set the minimum number of characters to trigger a geocoding request.
      * If you press `Enter` the search will be validated even if the length is not reached.
-     * This option work only when `searchOnTyping=true`.
+     * This option works only when `searchOnTyping=true`.
      *
-     * @defaultValue 0.
+     * @defaultValue 0
      */
     minLength?: number;
     /**
-     * Set the number of milliseconds to wait before a search validation.
+     * Set the number of milliseconds to wait before sending search requests.
      * If you press `Enter` the search will be immediately validated.
-     * This option work only when `searchOnTyping=true`.
+     * This option works only when `searchOnTyping=true`.
      *
      * @remarks with a basic plan you may set this option to 1000 to avoid your restrictions.
      *
@@ -341,13 +372,13 @@ declare namespace JawgPlaces {
      */
     layers?: Layer[] | Layer | (() => Layer) | (() => Layer[]);
     /**
-     * Restrict your search (forward and reverse) to specific data sources. You can get only OSM or WOF data for example. This is not recommanded.
+     * Restrict your search (forward and reverse) to specific data sources. You can get only OSM or WOF data for example. This is not recommended.
      *
      * @remarks Sources can be static or dynamic through a function.
      */
     sources?: Source[] | Source | (() => Source[]) | (() => Source);
     /**
-     * @inheritdoc FocusOptions.point
+     * @inheritDoc FocusOptions.point
      * @deprecated Replaced by {@link FocusOptions.point}
      */
     focusPoint?: LatLon | (() => LatLon);
@@ -361,11 +392,11 @@ declare namespace JawgPlaces {
      */
     place?: PlaceOptions | boolean;
     /**
-     * Show icon at the left each results.
+     * Show icon on the left side of each results.
      */
     showResultIcons?: boolean;
     /**
-     * Add a clear cross in the right side of the input.
+     * Add a clear cross on the right side of the input.
      */
     clearCross?: boolean;
     /**
@@ -385,7 +416,7 @@ declare namespace JawgPlaces {
     noResultsMessage?: string | false;
     /**
      * Callback triggered when Jawg Places API returns without error.
-     * @param features The list of features returned by Jawg Places API
+     * @param features The list of features returned by Jawg Places API. Can be an empty array.
      */
     onFeatures?: (features: Feature[]) => void;
     /**
@@ -402,7 +433,7 @@ declare namespace JawgPlaces {
      */
     onError?: (error: any) => void;
     /**
-     * Callback triggered when the input is empty.
+     * Callback triggered when the input is cleared.
      */
     onClear?: () => void;
   }
@@ -419,9 +450,9 @@ declare namespace JawgPlaces {
   interface LeafletTransitionOptions {
     /**
      * Type of camera move on result selection.
-     * `jump`: change the position of the camera without animation
-     * `fly`: animating camera transition along curve that evokes flight
-     * `hybrid`: use `fly` when the camera is near the point and jump otherwise
+     * - `jump`: change the position of the camera without animation
+     * - `fly`: animating camera transition along curve that evokes flight
+     * - `hybrid`: use `fly` when the camera is near the point and jump otherwise
      */
     type?: 'hybrid' | 'fly' | 'jump' | 'none';
   }
@@ -458,26 +489,26 @@ declare namespace JawgPlaces {
    * ```javascript
    * const adminArea = {
    *   show: true,
-   *   fillColor: 'rgba(0,75,120, 0.1)',
-   *   outlineColor: 'rgba(0,75,120, 1)',
+   *   fillColor: 'rgba(0, 75, 120, 0.1)',
+   *   outlineColor: 'rgba(0, 75, 120, 1)',
    * }
    * ```
    */
   interface AdminAreaOptions {
     /**
-     * `true` to show administrative boundary when the result is a administrative area.
+     * `true` to show administrative boundary when the result is an administrative area.
      */
     show: boolean;
     /**
-     * Fill color for the polygon, you should play with the opacity.
+     * Fill color of the polygon, you should play with the opacity.
      *
-     * @defaultValue 'rgba(0,75,120, 0.1)'
+     * @defaultValue 'rgba(0, 75, 120, 0.1)'
      */
     fillColor?: string;
     /**
-     * Outline color for the polygon.
+     * Outline color of the polygon.
      *
-     * @defaultValue 'rgba(0,75,120, 1)'
+     * @defaultValue 'rgba(0, 75, 120, 1)'
      */
     outlineColor?: string;
   }
@@ -491,28 +522,35 @@ declare namespace JawgPlaces {
    * const place = {
    *   enabled: true,
    *   geometries: 'source',
-   *   fillColor: 'rgba(105,87,117, 0.1)',
-   *   outlineColor: 'rgba(105,87,117, 1)',
+   *   fillColor: 'rgba(105, 87, 117, 0.1)',
+   *   outlineColor: 'rgba(105, 87, 117, 1)',
    * }
    * ```
    */
   interface MapPlaceOptions extends PlaceOptions {
     /**
-     * Fill color for the polygon, you should play with the opacity.
+     * Fill color of the polygon, you should play with the opacity.
      *
-     * @defaultValue 'rgba(105,87,117, 0.1)'
+     * @defaultValue 'rgba(105, 87, 117, 0.1)'
      */
     fillColor?: string;
     /**
-     * Outline color for the polygon.
+     * Outline color of the polygon.
      *
-     * @defaultValue 'rgba(105,87,117, 1)'
+     * @defaultValue 'rgba(105, 87, 117, 1)'
      */
     outlineColor?: string;
   }
 
   /**
    * Option for MapLibre and Mapbox markers.
+   *
+   * ```javascript
+   * const marker = {
+   *   show: 'all',
+   *   icon: 'marker',
+   * }
+   * ```
    */
   interface MapGLMarkerOptions {
     /**
@@ -537,6 +575,12 @@ declare namespace JawgPlaces {
 
   /**
    * Option for Leaflet markers.
+   *
+   * ```javascript
+   * const marker = {
+   *   show: 'all',
+   * }
+   * ```
    */
   interface LeafletMarkerOptions {
     /**
@@ -550,7 +594,14 @@ declare namespace JawgPlaces {
   }
 
   /**
-   * @inheritdoc JawgPlacesOptions
+   * Options to configure a Places JS instance for a HTML `<input>` element.
+   *
+   * ```javascript
+   * const options = {
+   *   accessToken: '<Access-Token>',
+   *   input: '#my-input',
+   * }
+   * ```
    *
    * @remarks Options for {@link JawgPlaces.Input}
    */
@@ -560,6 +611,13 @@ declare namespace JawgPlaces {
 
   /**
    * Options to configure a Places JS instance for a MapLibre or Mapbox map.
+   *
+   * ```javascript
+   * const options = {
+   *   accessToken: '<Access-Token>',
+   *   input: '#my-input',
+   * }
+   * ```
    *
    * @remarks Options for {@link JawgPlaces.MapLibre} and {@link JawgPlaces.Mapbox}
    */
@@ -590,6 +648,13 @@ declare namespace JawgPlaces {
 
   /**
    * Options to configure a Places JS instance for a Leaflet map.
+   *
+   * ```javascript
+   * const options = {
+   *   accessToken: '<Access-Token>',
+   *   input: '#my-input',
+   * }
+   * ```
    *
    * @remarks Options for {@link JawgPlaces.Leaflet}
    */
@@ -627,7 +692,7 @@ declare namespace JawgPlaces {
   }
 
   /**
-   * This class will help you to transform any input into search bar for geocoding.
+   * This class will help you transform any input into a search bar for geocoding.
    *
    * ```javascript
    * const jawgPlaces = new JawgPlaces.Input({
@@ -637,28 +702,23 @@ declare namespace JawgPlaces {
    * ```
    */
   class Input extends AbstractPlaces {
+    /** {@inheritDoc Input} */
     constructor(options: JawgPlacesInputOptions);
   }
 
   /**
-   * This class will help you to add or use search bar for geocoding with a MapLibre GL JS map.
+   * This class will help you add or use search bar for geocoding with a MapLibre GL JS map.
    *
    * ```javascript
    * const jawgPlaces = new JawgPlaces.MapLibre({
    *   accessToken: 'Access-Token',
    * })
+   * map.addControl(jawgPlaces)
    * ```
    */
   class MapLibre extends AbstractPlaces {
+    /** {@inheritDoc MapLibre} */
     constructor(options?: JawgPlacesMaplibreOptions);
-    /**
-     * This is the function used by MapLibre and Mapbox when you add a
-     * [maplibre.IControl](https://maplibre.org/maplibre-gl-js-docs/api/markers/#icontrol) or [mapboxgl.IControl](https://docs.mapbox.com/mapbox-gl-js/api/markers/#icontrol).
-     * Adds the control to the given map.
-     * @param map The map from [MapLibre](https://maplibre.org/maplibre-gl-js-docs/api/map/) or [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)
-     * @returns The generated control container
-     */
-    onAdd(map: maplibregl.Map | mapboxgl.Map): HTMLElement;
     /**
      * When Jawg Places **is not used** as a control within your map, you will need to call this function.
      * @param map The map from [MapLibre](https://maplibre.org/maplibre-gl-js-docs/api/map/) or [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)
@@ -672,47 +732,45 @@ declare namespace JawgPlaces {
   }
 
   /**
-   * This class will help you to add or use search bar for geocoding with a Mapbox GL JS map.
+   * This class will help you add or use search bar for geocoding with a Mapbox GL JS map.
    *
    * ```javascript
    * const jawgPlaces = new JawgPlaces.Mapbox({
    *   accessToken: 'Access-Token',
    * })
+   * map.addControl(jawgPlaces)
    * ```
    */
   class Mapbox extends MapLibre {
-    /**
-     * @inheritdoc
-     */
+    /** {@inheritDoc Mapbox} */
+    constructor(options?: JawgPlacesMaplibreOptions);
+    /** @inheritDoc */
     attachMap(map: maplibregl.Map | mapboxgl.Map): Mapbox;
   }
 
   /**
-   * This class will help you to add or use search bar for geocoding with a Leaflet map.
+   * This class will help you add or use search bar for geocoding with a Leaflet map.
    *
    * ```javascript
    * const jawgPlaces = new JawgPlaces.Leaflet({
    *   accessToken: 'Access-Token',
-   * })
+   *   L: L,
+   * }).addTo(map)
+   * // map.addControl(jawgPlaces)
    * ```
    */
   class Leaflet extends AbstractPlaces {
+    /** {@inheritDoc Leaflet} */
     constructor(options: JawgPlacesLeafletOptions);
-    /**
-     * This is the function used by Leaflet when you add a [L.Control](https://leafletjs.com/reference.html#control).
-     * Adds the control to the given map.
-     * @param map The map from [Leaflet](https://leafletjs.com/reference.html#map-example)
-     */
-    onAdd(map: L.Map): void;
     /**
      * The current position of the control in the map.
      */
     getPosition(): string;
     /**
-     * Adds the control to the given map.
+     * Adds the control to the given map. You can alternatively use `map.addControl(jawgPlaces)`.
      * @param map from [Leaflet](https://leafletjs.com/reference.html#map-example)
      */
-    addTo(map: L.Map): void;
+    addTo(map: L.Map): Leaflet;
     /**
      * When Jawg Places **is not used** as a control within your map, you will need to call this function.
      * @param map from [Leaflet](https://leafletjs.com/reference.html#map-example)
