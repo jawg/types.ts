@@ -724,7 +724,7 @@ declare namespace JawgPlaces {
      * @param map The map from [MapLibre](https://maplibre.org/maplibre-gl-js-docs/api/map/) or [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/)
      * @returns itself
      */
-    attachMap(map: maplibregl.Map | mapboxgl.Map): MapLibre;
+    attachMap(map: maplibregl.Map | mapboxgl.Map): this;
     /**
      * The default position of the control in the map.
      */
@@ -744,8 +744,6 @@ declare namespace JawgPlaces {
   class Mapbox extends MapLibre {
     /** {@inheritDoc Mapbox} */
     constructor(options?: JawgPlacesMaplibreOptions);
-    /** @inheritDoc */
-    attachMap(map: maplibregl.Map | mapboxgl.Map): Mapbox;
   }
 
   /**
@@ -770,13 +768,13 @@ declare namespace JawgPlaces {
      * Adds the control to the given map. You can alternatively use `map.addControl(jawgPlaces)`.
      * @param map from [Leaflet](https://leafletjs.com/reference.html#map-example)
      */
-    addTo(map: L.Map): Leaflet;
+    addTo(map: L.Map): this;
     /**
      * When Jawg Places **is not used** as a control within your map, you will need to call this function.
      * @param map from [Leaflet](https://leafletjs.com/reference.html#map-example)
      * @returns itself
      */
-    attachMap(map: L.Map): Leaflet;
+    attachMap(map: L.Map): this;
   }
 
   /**
